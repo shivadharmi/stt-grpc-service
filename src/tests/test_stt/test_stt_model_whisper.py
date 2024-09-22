@@ -1,6 +1,9 @@
-import torch
 import unittest
+
+import torch
+
 from src.stt.stt_model_whisper import WhisperModel
+
 
 class TestWhisperModel(unittest.TestCase):
 
@@ -22,6 +25,7 @@ class TestWhisperModel(unittest.TestCase):
         input_features = self.model.preprocess_audio(audio_tensor, sample_rate)
         transcription = self.model.transcribe(input_features)
         self.assertIsInstance(transcription, str)  # Check if output is a string
+
 
 if __name__ == "__main__":
     unittest.main()

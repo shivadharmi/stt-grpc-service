@@ -1,0 +1,33 @@
+[tool.black]
+line-length = 88
+target-version = ['py310']
+skip-string-normalization = true
+extend-exclude = '''
+(
+    \.venv
+    | \.mypy_cache
+    | \.pytest_cache
+    | build
+    | dist
+    | __pycache__
+    | .*_pb2\.py
+    | .*_pb2_grpc\.py
+    | protos/.*\.proto
+)
+'''
+
+[tool.ruff]
+line-length = 88
+select = ["E", "F", "I", "B", "C", "Q"]
+exclude = [
+    "build",
+    "dist",
+    ".venv",
+    "__pycache__",
+    "*pb2.py",         # Exclude all gRPC *_pb2.py files
+    "*pb2_grpc.py",    # Exclude all gRPC *_pb2_grpc.py files
+    "protos/*.proto",  # Exclude .proto files
+    "generated/",      # Exclude the entire generated directory if used
+    "grpc_generated/", # Another example if you have a specific output folder
+]
+fix = true

@@ -1,0 +1,21 @@
+repos:
+  - repo: https://github.com/charliermarsh/ruff-pre-commit
+    rev: v0.6.7 # Use the latest version available
+    hooks:
+      - id: ruff
+        exclude: '.*(_pb2\.py|_pb2_grpc\.py|\.proto)$' # Ignore gRPC-generated files
+
+  - repo: https://github.com/psf/black
+    rev: 24.8.0 # Use the latest version available
+    hooks:
+      - id: black
+        args: [--line-length=88]
+        exclude: '.*(_pb2\.py|_pb2_grpc\.py|\.proto)$' # Ignore gRPC-generated files
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0 # Use the latest version
+    hooks:
+      - id: trailing-whitespace
+        exclude: '.*(_pb2\.py|_pb2_grpc\.py|\.proto)$' # Ignore gRPC-generated files
+      - id: end-of-file-fixer
+        exclude: '.*(_pb2\.py|_pb2_grpc\.py|\.proto)$' # Ignore gRPC-generated files

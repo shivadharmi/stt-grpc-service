@@ -1,10 +1,12 @@
 # Import necessary libraries
+import io
+
+from src.stt.stt_model_whisper import WhisperModel
 from stt_service_pb2 import SpeechToTextRequest, SpeechToTextResponse
 from stt_service_pb2_grpc import (
     SpeechToTextService,
 )
-from src.stt.stt_model_whisper import WhisperModel
-import io
+
 
 class SpeechToTextWhisperServicer(SpeechToTextService):
     """
@@ -38,5 +40,3 @@ class SpeechToTextWhisperServicer(SpeechToTextService):
         # Create and return the response with the transcribed text
         response = SpeechToTextResponse(text=text)
         return response
-
-

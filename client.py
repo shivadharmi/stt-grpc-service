@@ -1,5 +1,7 @@
 import logging
+
 import grpc
+
 from stt_service_pb2 import SpeechToTextRequest
 from stt_service_pb2_grpc import SpeechToTextServiceStub
 

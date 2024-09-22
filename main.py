@@ -1,11 +1,14 @@
 import os
-from dotenv import load_dotenv
-import grpc
 from concurrent import futures
+
+import grpc
+from dotenv import load_dotenv
+
+from src.stt_whisper_service.stt_whisper_service import SpeechToTextWhisperServicer
 from stt_service_pb2_grpc import (
     add_SpeechToTextServiceServicer_to_server,
 )
-from src.stt_whisper_service.stt_whisper_service import SpeechToTextWhisperServicer
+
 
 def serve():
     """

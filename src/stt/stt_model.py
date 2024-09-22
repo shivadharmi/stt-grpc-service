@@ -1,6 +1,7 @@
+import logging
 from abc import ABC, abstractmethod
 from typing import Any, BinaryIO
-import logging
+
 import torch
 import torchaudio
 
@@ -8,6 +9,7 @@ import torchaudio
 logging.basicConfig(
     level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
 )
+
 
 class STTModel(ABC):
     """
@@ -33,7 +35,9 @@ class STTModel(ABC):
         Returns:
             Any: Preprocessed audio features.
         """
-        raise NotImplementedError("preprocess_audio() must be implemented by subclasses")
+        raise NotImplementedError(
+            "preprocess_audio() must be implemented by subclasses"
+        )
 
     @abstractmethod
     def transcribe(self, input_features: Any) -> str:

@@ -1,13 +1,16 @@
-import torchaudio
-import torch
-from transformers import AutoProcessor, AutoModelForSpeechSeq2Seq
 import logging
+
+import torch
+import torchaudio
+from transformers import AutoModelForSpeechSeq2Seq, AutoProcessor
+
 from .stt_model import STTModel
 
 # Configure logging
 logging.basicConfig(
     level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
 )
+
 
 class WhisperModel(STTModel):
     """

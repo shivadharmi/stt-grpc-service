@@ -32,7 +32,14 @@ Speech-to-Text service using gRPC and the Whisper model from Hugging Face's Tran
    pip install -r requirements-dev.txt
    ```
 
-3. **Environment Variables**
+3. **Install Pre-commit**
+   To install pre-commit, run:
+
+   ```bash
+   pip install pre-commit
+   ```
+
+4. **Environment Variables**
    Create a `.env` file in the root directory and set the following variables for local environment:
 
    ```plaintext
@@ -48,17 +55,31 @@ Speech-to-Text service using gRPC and the Whisper model from Hugging Face's Tran
    SSL_CERTIFICATE_CHAIN_PATH=<path-to-certificate-chain>
    ```
 
-4. **Run the gRPC Server**
+5. **Run the gRPC Server**
    Start the server by running:
 
    ```bash
    python main.py
    ```
 
-5. **Run the Client**
+6. **Run the Client**
    In a separate terminal, run the client to send audio data:
    ```bash
    python src/client/client.py
+   ```
+7. **Run Pre-commit Hooks**
+   To ensure code quality, install and run pre-commit hooks:
+
+   ```bash
+   pre-commit run --all-files
+   ```
+
+8. **Code Formatting and Linting**
+   Use `ruff` for linting and `black` for code formatting:
+
+   ```bash
+   ruff check .
+   black .
    ```
 
 ## Testing

@@ -1,0 +1,6 @@
+# Ignore all gRPC-generated files
+*_pb2.py
+*_pb2_grpc.py
+
+# Ignore the directory where .proto files are stored, if applicable
+protos/*.proto
