@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package stt_inference;
+
+message SpeechToTextRequest {
+    bytes audio_data = 1;
+}
+
+message SpeechToTextResponse {
+    string text = 1;
+}
+
+service SpeechToTextService {
+    rpc SpeechToText(SpeechToTextRequest) returns (SpeechToTextResponse) {}
+}
