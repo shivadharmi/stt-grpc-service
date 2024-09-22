@@ -33,11 +33,17 @@ Speech-to-Text service using gRPC and the Whisper model from Hugging Face's Tran
    ```
 
 3. **Environment Variables**
-   Create a `.env` file in the root directory and set the following variables:
+   Create a `.env` file in the root directory and set the following variables for local environment:
 
    ```plaintext
    ENVIRONMENT=local
    PORT=50051
+   ```
+
+   For non-local environments (development or production), set the following variables:
+
+   ```plaintext
+   ENVIRONMENT=development  # or production
    SSL_PRIVATE_KEY_PATH=<path-to-private-key>
    SSL_CERTIFICATE_CHAIN_PATH=<path-to-certificate-chain>
    ```
