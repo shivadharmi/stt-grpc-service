@@ -3,7 +3,7 @@ import unittest
 from concurrent import futures
 from stt_service_pb2 import SpeechToTextRequest
 from stt_service_pb2_grpc import add_SpeechToTextServiceServicer_to_server, SpeechToTextServiceStub
-from stt_whisper_service.stt_whisper_service import SpeechToTextServicer  # Adjust the import based on your project structure
+from src.stt_whisper_service.stt_whisper_service import SpeechToTextWhisperServicer  # Adjust the import based on your project structure
 import os
 
 
@@ -12,7 +12,7 @@ class TestSpeechToTextService(unittest.TestCase):
     def setUpClass(cls):
         # Start a gRPC server for testing
         cls.server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
-        add_SpeechToTextServiceServicer_to_server(SpeechToTextServicer(), cls.server)
+        add_SpeechToTextServiceServicer_to_server(SpeechToTextWhisperServicer(), cls.server)
         cls.server.add_insecure_port('[::]:50051')
         cls.server.start()
 
@@ -28,11 +28,10 @@ class TestSpeechToTextService(unittest.TestCase):
 
     def test_speech_to_text(self):
         # Load test audio data from the data folder
-        audio_file_path = os.path.join('data', 'test_audio.wav')  # Adjust the filename as needed
-        with open(audio_file_path, 'rb') as audio_file:
-            test_audio_data = audio_file.read()
+        with open("data/test_data.wav", "rb") as f:
+                audio_data = f.read()
 
-        request = SpeechToTextRequest(audio_data=test_audio_data)
+        request = SpeechToTextRequest(audio_data=audio_data)
 
         # Call the gRPC method
         response = self.stub.SpeechToText(request)

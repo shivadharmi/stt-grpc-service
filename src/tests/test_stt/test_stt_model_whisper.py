@@ -13,7 +13,7 @@ class TestWhisperModel(unittest.TestCase):
         audio_tensor = torch.randn(1, 16000)  # Simulated audio tensor
         sample_rate = 16000
         processed_features = self.model.preprocess_audio(audio_tensor, sample_rate)
-        self.assertEqual(processed_features.shape[1], 80)  # Check output feature size
+        self.assertEqual(processed_features.shape[1], 128)  # Check output feature size
 
     def test_transcribe(self):
         """Test the transcription method."""
